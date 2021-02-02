@@ -1,15 +1,24 @@
 // add express server
-const http = require('http')
+const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
 
+
 // create express app
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 8080;
+
 
 // include midleware to parse json
 app.use(bodyParser.urlencoded({ extended: false }));
 
+app.use(bodyParser.json());
+
+app.use(function (req, res) {
+    res.setHeader('Content-Type', 'text/plain')
+    res.write('you posted:\n')
+    res.end(JSON.stringify(req.body, null, 2))
+  })
 // html routes (routes that will serve websites)
 //define landing page route 
   // use index.html inside public folder
@@ -22,3 +31,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // put route to update a note (app.put())
 // delete route to delete a note
 // invoke listen function on express app
+app.listen(PORT, function(){
+    console.log('App is listening on PORT: ' + PORT);
+});
