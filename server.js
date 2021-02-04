@@ -15,6 +15,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(bodyParser.json());
 
+app.use(express.static("assets"));
 //API routes 
 require('./Develop/routing/api-route')(app);
 
