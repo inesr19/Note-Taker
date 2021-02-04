@@ -1,5 +1,6 @@
 // add express server
 const path = require('path');
+const bodyParser = require('body-parser');
 const express = require('express');
 
 // create express app
@@ -8,9 +9,9 @@ const PORT = process.env.PORT || 8080;
 
 
 // include midleware to parse json
-app.use(express.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use(express.json());
+app.use(bodyParser.json());
 
 app.use(express.static('public'));
 //API routes 

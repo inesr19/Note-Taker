@@ -8,7 +8,7 @@ module.exports = function (app) {
     });
 
     app.get('/api/notes/:id', function (req, res) {
-        res.json(data[Number(req.params.id)]);
+        res.json(data[req.params.id]);
     })
 
     app.post('/api/notes', function (req, res) {
@@ -22,7 +22,13 @@ module.exports = function (app) {
         })
         res.json(data);
     })
+
     app.put('/api/notes', function (req, res) {
         
+    });
+
+    app.delete('/api/notes/:id', function (req, res) {
+       
     })
+
 }
