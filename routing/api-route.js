@@ -1,6 +1,6 @@
 const path = require('path');
 const fs = require('fs');
-const data = JSON.parse(fs.readFileSync('./Develop/db/db.json', 'utf8'));
+const data = JSON.parse(fs.readFileSync('./db/db.json', 'utf8'));
 
 module.exports = function (app) {
     app.get('/api/notes', function(req, res) {
@@ -13,11 +13,16 @@ module.exports = function (app) {
 
     app.post('/api/notes', function (req, res) {
         const note = req.body;
-        data.push(note.title, note.text);
+        const newId = (data.length).toString();
+        note.id = newId;
+        data.push(note);
         
-        fs.writeFileSync('./Develop/db/db.json', JSON.stringify(data), function(err) {
+        fs.writeFileSync('./db/db.json', JSON.stringify(data), function(err) {
             if(err) throw(err);
         })
         res.json(data);
+    })
+    app.put('/api/notes', function (req, res) {
+        
     })
 }

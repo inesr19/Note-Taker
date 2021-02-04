@@ -1,9 +1,6 @@
 // add express server
 const path = require('path');
 const express = require('express');
-const bodyParser = require('body-parser');
-const { v4: uuidv4 } = require('uuid');
-uuidv4();
 
 // create express app
 const app = express();
@@ -11,16 +8,16 @@ const PORT = process.env.PORT || 8080;
 
 
 // include midleware to parse json
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 
-app.use(bodyParser.json());
+app.use(express.json());
 
-app.use(express.static("assets"));
+app.use(express.static('public'));
 //API routes 
-require('./Develop/routing/api-route')(app);
+require('./routing/api-route')(app);
 
 // html routes (routes that will serve websites)
-require('./Develop/routing/html-route')(app);
+require('./routing/html-route')(app);
 //define landing page route 
   // use index.html inside public folder  
 
