@@ -7,11 +7,14 @@ module.exports = function (app) {
         res.json(data);
     });
 
+    app.get('/api/notes/:id', function (req, res) {
+        res.json(data[Number(req.params.id)]);
+    })
+    
     app.post('/api/notes', function (req, res) {
-        const notes = req.body;
-        data.push(notes.title, notes.text);
+        const note = req.body;
+        data.push(note.title, note.text);
         res.status(201);
         res.end();
-
     })
 }
