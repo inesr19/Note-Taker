@@ -14,11 +14,14 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(bodyParser.json());
 
+//API routes 
+require('./Develop/routing/api-route')(app);
+
 // html routes (routes that will serve websites)
 require('./Develop/routing/html-route')(app);
 //define landing page route 
   // use index.html inside public folder  
-//API routes 
+
 // post route to save a note 
   // ADD the new note to the db.json
 // get route to get all notes
