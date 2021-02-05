@@ -1,1 +1,7 @@
-# Note-Taker
+# Note Taker
+
+## Description
+
+## Screenshot
+
+## Link
